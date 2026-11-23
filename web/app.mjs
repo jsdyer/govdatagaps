@@ -1,37 +1,32 @@
-import { cleanLines } from './model.mjs';
-const input = document.querySelector('#input');
-const output = document.querySelector('#output');
-const status = document.querySelector('#status');
-const copy = document.querySelector('#copy');
-function update() {
-  const result = cleanLines(input.value);
-  output.value = result.text;
-  status.textContent = `${result.count} unique ${result.count === 1 ? 'line' : 'lines'}; ${result.removed} ${result.removed === 1 ? 'duplicate' : 'duplicates'} removed.`;
-  copy.disabled = result.count === 0;
+import {STATUS,frequency,dateText,ageDays,resourceCounts,needsReview,changes,filterRows,safeUrl,evidenceCsv,reportText} from './model.mjs';
+const $=id=>document.getElementById(id);
+let manifest,snapshot,selectedId,visible=[],currentIndex=0,showAll=false,renderVersion=0;
+const cache=new Map();
+const node=(tag,text,className)=>{const e=document.createElement(tag);if(text!==undefined)e.textContent=text;if(className)e.className=className;return e;};
+const append=(parent,...children)=>{parent.append(...children);return parent;};
+function link(text,url){const a=node('a',text);const safe=safeUrl(url);if(safe){a.href=safe;a.rel='noopener noreferrer';a.target='_blank';}return a;}
+function rawLink(text,file){const a=node('a',text);if(/^\.\/data\/snapshots\/[A-Za-z0-9]+\/[a-z0-9-]+\.json$/.test(file))a.href=file;return a;}
+function download(content,name,type='text/plain;charset=utf-8'){const url=URL.createObjectURL(new Blob([content],{type}));const a=node('a');a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);}
+async function load(index){if(!manifest.captures[index])return null;const c=manifest.captures[index];if(cache.has(c.id))return cache.get(c.id);if(!/^\.\/data\/snapshots\/[A-Za-z0-9]+\/snapshot\.json$/.test(c.file))throw Error('Invalid capture path');const response=await fetch(c.file);if(!response.ok)throw Error(`Capture request failed (${response.status})`);const value=await response.json();if(value.schema_version!==1||!Array.isArray(value.datasets))throw Error('Unsupported capture format');cache.set(c.id,value);return value;}
+function threshold(){return Number($('threshold').value);}
+function signal(row){const c=resourceCounts(row);if(row.state==='not_found')return 'Catalogue returned Not Found';if(c.unavailable)return `${c.unavailable} URL not found`;if(threshold()&&ageDays(row.metadata_modified,snapshot.captured_at)>threshold())return 'Metadata exceeds your age threshold';if(c.blocked||c.inconclusive)return `${(c.blocked||0)+(c.inconclusive||0)} check inconclusive`;return `${c.reachable||0} checked URLs reachable`;}
+function renderList(){visible=filterRows(snapshot.datasets,{query:$('search').value.trim(),theme:$('theme').value,state:$('state').value,asOf:snapshot.captured_at,threshold:threshold()});if(!visible.some(r=>r.id===selectedId))selectedId=visible[0]?.id;const list=$('dataset-list');list.replaceChildren();for(const row of visible){const b=node('button',undefined,'dataset-button');b.type='button';b.setAttribute('aria-pressed',String(row.id===selectedId));append(b,node('span',row.label,'name'),node('span',`${row.theme} · ${frequency(row.frequency)}`,'meta'),node('span',signal(row),'signal'+(needsReview(row,snapshot.captured_at,threshold())?' warning':'')));b.addEventListener('click',()=>{selectedId=row.id;showAll=false;renderList();renderDetail();});list.append(b);}$('status').textContent=`${visible.length} of ${snapshot.datasets.length} datasets · observed ${dateText(snapshot.captured_at)}`;$('empty').hidden=visible.length>0;$('export-csv').disabled=!visible.length;}
+function pair(label,value){return append(node('div'),node('dt',label),node('dd',value));}
+async function renderDetail(){const version=++renderVersion;const row=snapshot.datasets.find(r=>r.id===selectedId),detail=$('detail');detail.replaceChildren();if(!row){detail.append(node('p','Choose a different filter to inspect a dataset.'));return;}
+ append(detail,node('p',row.theme.toUpperCase(),'eyebrow'),node('h3',row.title||row.label),node('p',row.publisher||'Publisher not supplied','publisher'),node('p',row.id,'record-id'));
+ const actions=node('div',undefined,'actions');append(actions,link('Official record ↗',row.source_url),rawLink('Raw metadata ↗',row.raw_file));const evidence=node('button','Save evidence note ↓');evidence.id='save-evidence';evidence.type='button';evidence.disabled=true;actions.append(evidence);detail.append(actions);
+ detail.append(node('p',signal(row)+'. '+(row.state==='present'?'Source metadata and resource responses are assessed separately.':'Only a successful CKAN Not Found response produces this flag.'),'lead-status'));
+ const age=ageDays(row.metadata_modified,snapshot.captured_at),grid=node('dl',undefined,'record-grid');append(grid,pair('Portal metadata modified',dateText(row.metadata_modified)),pair('Publisher modification date',dateText(row.dataset_modified)),pair('Declared frequency',frequency(row.frequency)),pair('Metadata age at capture',age===null?'Not available':`${age.toLocaleString()} days${threshold()?` · your threshold: ${threshold()} days`: ' · no threshold set'}`));detail.append(grid);
+ detail.append(node('h4','Resource observations'));const counts=resourceCounts(row),checked=(row.resources||[]).filter(r=>r.check?.status!=='not_checked');detail.append(node('p',`${checked.length} of ${row.resources.length} resource URLs checked. No file contents downloaded or validated.`,'publisher'));
+ const resources=node('div',undefined,'resource-list');for(const resource of (showAll?row.resources:checked)){const box=node('div',undefined,'resource'),head=node('div',undefined,'resource-head'),status=resource.check?.status||'not_checked';append(head,node('span',`${resource.format||'LINK'} / ${resource.name||resource.id}`,'resource-title'),node('span',STATUS[status],`badge ${status}`));append(box,head,link(resource.url,resource.url));if(resource.check?.checked_at)box.append(node('small',`${resource.check.method} · ${resource.check.http_status?'HTTP '+resource.check.http_status+' · ':''}${dateText(resource.check.checked_at)}`));if(resource.check?.detail)box.append(node('small',resource.check.detail));resources.append(box);}detail.append(resources);
+ if((counts.not_checked||0)>0){const toggle=node('button',showAll?'Show sampled URLs only':`Show all ${row.resources.length} resource URLs`);toggle.id='toggle-resources';toggle.type='button';toggle.addEventListener('click',()=>{showAll=!showAll;renderDetail();});detail.append(toggle);}
+ detail.append(node('h4','Observation timeline'));const timeline=node('ol',undefined,'timeline');detail.append(timeline);const loading=node('li','Loading retained observations…');timeline.append(loading);const current=snapshot,index=currentIndex;
+ try{const captures=await Promise.all(Array.from({length:Math.min(7,manifest.captures.length-index)},(_,i)=>load(index+i)));if(version!==renderVersion)return;timeline.replaceChildren();for(let i=0;i<Math.min(6,captures.length);i++){const snap=captures[i],item=snap.datasets.find(r=>r.id===row.id);if(!item)continue;const prior=captures[i+1]?.datasets.find(r=>r.id===row.id);const eventList=changes(prior,item);const li=node('li');li.append(node('time',dateText(snap.captured_at)));if(!prior&&index+i!==manifest.captures.length-1){li.append(node('p','Earlier comparison is outside this timeline view.'));}else if(!eventList.length){li.append(node('p','No compared metadata, resource URLs or check classifications changed.'));}else{for(const event of eventList){li.append(node('p',event.text));if(event.before)li.append(node('p',`Previous URL: ${event.before}`));if(event.after)li.append(node('p',`Observed URL: ${event.after}`));}}timeline.append(li);}if(manifest.captures.length-index>6)detail.append(node('p','Showing six observations up to this capture. Use the dated capture selector for older records.','publisher'));
+ const diff=changes(captures[1]?.datasets.find(r=>r.id===row.id),row);evidence.disabled=false;evidence.onclick=()=>download(reportText(row,current,diff,threshold()),`govdatagaps-${row.id}-${current.captured_at.slice(0,10)}.txt`);
+ }catch(error){loading.textContent='Earlier history could not be loaded. The selected capture is still available.';evidence.disabled=false;evidence.onclick=()=>download(reportText(row,current,[{text:'Previous capture could not be loaded; no comparison available.'}],threshold()),`govdatagaps-${row.id}.txt`);}
 }
-input.addEventListener('input', update);
-document.querySelector('#sample').addEventListener('click', () => {
-  input.value = '  Halifax\nLangley\nHalifax\n\nVancouver  ';
-  update();
-});
-document.querySelector('#clear').addEventListener('click', () => {
-  input.value = '';
-  update();
-  input.focus();
-});
-if (navigator.clipboard && window.isSecureContext) {
-  copy.hidden = false;
-  copy.disabled = true;
-  copy.addEventListener('click', async () => {
-    try {
-      await navigator.clipboard.writeText(output.value);
-      status.textContent = 'Result copied.';
-    } catch {
-      output.focus();
-      output.select();
-      status.textContent = 'Copy was unavailable. The result is selected so you can copy it manually.';
-    }
-  });
-}
-// Namespace future preference storage as coolcode:<tool-id>:<key>.
-// Do not persist pasted text or uploads by default.
+async function chooseCapture(index){$('status').textContent='Loading selected capture…';try{const data=await load(index);currentIndex=index;snapshot=data;const total=snapshot.datasets.reduce((a,r)=>{for(const [s,n]of Object.entries(resourceCounts(r)))a[s]=(a[s]||0)+n;return a;},{});$('metric-records').textContent=snapshot.datasets.length;$('metric-checked').textContent=Object.entries(total).filter(([s])=>s!=='not_checked').reduce((n,[,v])=>n+v,0);$('metric-unavailable').textContent=total.unavailable||0;$('metric-history').textContent=manifest.captures.length;$('capture-date').textContent=dateText(snapshot.captured_at);$('baseline-note').textContent=manifest.captures.length===1?'Baseline established. This first capture preserves what was observed; changes will appear after the next successful weekly collection.':`Comparisons use consecutive retained captures. ${manifest.captures.length} observations are available; a missing file response is not proof of permanent deletion.`;const old=$('theme').value;$('theme').replaceChildren(new Option('All subjects',''));[...new Set(snapshot.datasets.map(r=>r.theme))].sort().forEach(t=>$('theme').append(new Option(t,t)));$('theme').value=old;renderList();renderDetail();}catch(error){$('status').textContent=`Unable to load data: ${error.message}. Try reloading or open the source repository.`;}}
+for(const id of ['search','theme','state','threshold'])$(id).addEventListener(id==='search'?'input':'change',()=>{if(snapshot){renderList();renderDetail();}});
+$('capture').addEventListener('change',()=>chooseCapture(Number($('capture').value)));
+$('export-csv').addEventListener('click',()=>download(evidenceCsv(visible,snapshot.captured_at,threshold()),`govdatagaps-${snapshot.captured_at.slice(0,10)}.csv`,'text/csv;charset=utf-8'));
+try{const response=await fetch('./data/manifest.json');if(!response.ok)throw Error(`Manifest request failed (${response.status})`);manifest=await response.json();if(!manifest.captures?.length)throw Error('No validated captures available');manifest.captures.forEach((c,i)=>$('capture').append(new Option(dateText(c.captured_at),String(i))));await chooseCapture(0);}catch(error){$('status').textContent=`Data could not be loaded: ${error.message}. Open the source repository for retained files.`;$('baseline-note').textContent='Saved data is unavailable in this view.';$('capture-date').textContent='Capture unavailable';}

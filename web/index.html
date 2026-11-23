@@ -1,34 +1,23 @@
 <!doctype html>
 <html lang="en-CA">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="{{DESCRIPTION}}">
-  <title>{{TITLE}} · CoolCode</title>
-  <link rel="stylesheet" href="./style.css">
-  <script type="module" src="./app.mjs"></script>
-  {{VISIT_COUNTER}}
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="{{DESCRIPTION}}"><title>{{TITLE}} · CoolCode</title>
+<link rel="stylesheet" href="./style.css"><script type="module" src="./app.mjs"></script>{{VISIT_COUNTER}}
 </head>
 <body data-tool-id="{{TOOL_ID}}">
-  <a class="skip" href="#main">Skip to content</a>
-  <header><a href="https://coolcode.ca/">← CoolCode.ca</a><a href="{{SOURCE_URL}}">Source &amp; instructions ↗</a></header>
-  <main id="main">
-    <p class="eyebrow">Browser tool starter</p>
-    <h1>{{TITLE}}</h1>
-    <p class="intro">{{DESCRIPTION}}</p>
-    <section aria-labelledby="example-title">
-      <h2 id="example-title">Clean a list</h2>
-      <p>Trim spaces, skip blank lines and remove exact duplicates. Capitalization stays distinct.</p>
-      <div class="panels">
-        <div><label for="input">Your lines</label><textarea id="input" rows="10" maxlength="100000" spellcheck="false" placeholder="Paste one item per line"></textarea></div>
-        <div><label for="output">Cleaned lines</label><textarea id="output" rows="10" readonly spellcheck="false"></textarea></div>
-      </div>
-      <div class="actions"><button id="sample" type="button">Load example</button><button id="clear" type="button">Clear</button><button id="copy" type="button" hidden>Copy result</button></div>
-      <p id="status" role="status" aria-live="polite">Paste a list to begin.</p>
-      <noscript><p>This tool needs JavaScript to process your text. The source is available above.</p></noscript>
-    </section>
-    <aside aria-label="Privacy"><strong>Stays on your device.</strong> The browser processes your text in this tab. Reloading clears it.</aside>
-  </main>
-  <footer>Part of <a href="https://coolcode.ca/">the CoolCode collection</a>. {{ISSUE_LINK}}</footer>
-</body>
-</html>
+<a class="skip" href="#main">Skip to content</a>
+<header class="shell"><a class="brand" href="https://coolcode.ca/">CoolCode<span>.ca</span></a><nav aria-label="Page"><a href="#watchlist">Watchlist</a><a href="#method">How to read this</a><a href="{{SOURCE_URL}}">Source ↗</a></nav></header>
+<main id="main">
+<section class="hero shell" aria-labelledby="title"><div><p class="eyebrow"><span class="dot"></span> GOVERNMENT DATA GAP DETECTOR</p><h1 id="title">Public data.<br><em>Missing pieces.</em></h1><p class="intro">Follow the records behind the promises. A dated watchlist of federal datasets, changed metadata and download availability.</p></div><aside class="capture-card"><p class="eyebrow">OBSERVATION LOG / CANADA</p><div class="barcode" aria-hidden="true"></div><p id="capture-date">Loading the latest capture…</p><p>Collected weekly · 8 selected datasets<br>Evidence for questions, not verdicts.</p><a href="#method">Understand the signals ↓</a></aside></section>
+<div class="shell"><section class="metrics" aria-label="Capture summary"><div><strong id="metric-records">—</strong><span>datasets watched</span></div><div><strong id="metric-checked">—</strong><span>resource URLs checked</span></div><div><strong id="metric-unavailable">—</strong><span>HTTP 404 / 410 responses</span></div><div><strong id="metric-history">—</strong><span>dated captures retained</span></div></section>
+<p class="notice" id="baseline-note">Loading recorded observations.</p>
+<section id="watchlist" aria-labelledby="watchlist-title"><div class="section-head"><div><p class="eyebrow">01 / THE WATCHLIST</p><h2 id="watchlist-title">Inspect the evidence</h2></div><button id="export-csv" type="button" disabled>Export filtered CSV ↓</button></div>
+<div class="filters"><div class="search-wrap"><label for="search">Find a dataset</label><input id="search" type="search" placeholder="Title, institution or record ID…"></div><div><label for="theme">Subject</label><select id="theme"><option value="">All subjects</option></select></div><div><label for="state">Observation</label><select id="state"><option value="">All observations</option><option value="review">Needs a closer look</option><option value="blocked">Blocked / inconclusive</option><option value="reachable">Has a reachable URL</option><option value="missing">Catalogue record not found</option></select></div><div><label for="capture">Dated capture</label><select id="capture" aria-label="Dated capture"></select></div></div>
+<div class="threshold"><label for="threshold">Flag portal metadata older than</label><select id="threshold"><option value="0">No age threshold</option><option value="30">30 days</option><option value="90">90 days</option><option value="180">180 days</option><option value="365">365 days</option></select><span>Your review threshold, not a publisher deadline.</span></div>
+<p id="status" role="status" aria-live="polite">Loading…</p>
+<div class="workspace"><div><div id="dataset-list" class="dataset-list" aria-label="Dataset watchlist"></div><p id="empty" hidden>No datasets match. Try a different search or observation.</p></div><article id="detail" class="detail" aria-live="polite"><p>Select a dataset to inspect its record.</p></article></div></section>
+<section id="method" class="method" aria-labelledby="method-title"><div><p class="eyebrow">02 / READ THE SIGNALS</p><h2 id="method-title">A gap is a question.<br>Keep the context.</h2><p>A missing file, a changed URL and a slow release are different observations. This tool keeps them separate so the evidence stays useful.</p><div class="actions"><a href="https://coolcode.ca/atip/">Explore ATIP records ↗</a><a href="https://coolcode.ca/datasetexplorer/">Search the full catalogue ↗</a></div></div><div class="method-items"><details open><summary>What the checks can tell you</summary><p>Two resource URLs per dataset are checked each week: downloadable formats first, then English resources. HTTP 404 or 410 is a failed lookup at that time. HTTP 401, 403 and 429 means blocked or rate limited. Network errors and other responses are inconclusive. A 200 response can still be an error page; this monitor does not validate file contents.</p></details><details><summary>Dates and expected updates</summary><p>Portal metadata modification and the publisher's modification date are shown separately. The declared frequency is preserved as published, but does not create a firm deadline. Your age threshold flags old portal metadata for review; it cannot prove that the underlying data is late.</p></details><details><summary>History, scope and privacy</summary><p>The watchlist is eight deliberately selected records, not the entire federal catalogue. Raw metadata and dated snapshots are retained in this public repository. The first capture is a baseline; changes appear only after another successful capture. Failed metadata collection leaves the previous data online. Searching, filtering and exporting stay in this tab. Opening source links contacts those publishers. The shared CoolCode counter measures aggregate opens, without filter values.</p></details><details><summary>Sources and reuse</summary><p>Metadata comes from <a href="https://open.canada.ca/en/access-our-application-programming-interface-api">Canada's public CKAN API</a>, with resource-specific licences shown in the original catalogue. Follow the <a href="https://open.canada.ca/en/open-government-licence-canada">Open Government Licence – Canada</a> where applicable. This independent project is not a Government of Canada service.</p></details></div></section>
+<noscript><p>JavaScript is needed for search and comparison. Dated JSON captures remain available in the source repository.</p></noscript>
+</div></main><footer class="shell"><span>Government Data Gap Detector · <a href="https://coolcode.ca/">CoolCode</a></span><span>{{ISSUE_LINK}} · <a href="{{SOURCE_URL}}">Code &amp; collection log ↗</a></span></footer>
+</body></html>

@@ -1,21 +1,15 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { cleanLines } from '../web/model.mjs';
-test('trims, removes blanks and preserves first-seen order', () => {
-  assert.deepEqual(cleanLines('  Halifax\nLangley\nHalifax\n\nVancouver  '), {
-    text: 'Halifax\nLangley\nVancouver', count: 3, removed: 1,
-  });
-});
-test('supports Windows and old Mac line endings', () => {
-  assert.equal(cleanLines('a\r\nb\ra').text, 'a\nb');
-});
-test('empty text and whitespace produce an empty result', () => {
-  assert.deepEqual(cleanLines(' \n\t'), { text: '', count: 0, removed: 0 });
-});
-test('preserves case and Unicode', () => {
-  assert.equal(cleanLines('Québec\nquébec\n東京\nQuébec').text, 'Québec\nquébec\n東京');
-});
-test('treats markup as ordinary text', () => {
-  assert.equal(cleanLines('<script>alert(1)</script>\n<script>alert(1)</script>').text, '<script>alert(1)</script>');
-});
-test('rejects non-text input', () => { assert.throws(() => cleanLines(null), TypeError); });
+import {changes,needsReview,filterRows,evidenceCsv,safeUrl,ageDays,resourceCounts,reportText} from '../web/model.mjs';
+const row={id:'a',state:'present',title:'Contracts',label:'Contracts',theme:'Spending',publisher:'Treasury Board',metadata_modified:'2026-01-01T00:00:00',frequency:'P3M',source_url:'https://open.canada.ca/data/en/dataset/a',resources:[{id:'r',name:'File',url:'https://example.com/data.csv',check:{status:'reachable',http_status:200,checked_at:'2026-11-23T00:00:00Z'}}]};
+const at='2026-11-23T00:00:00Z';
+test('first actual observation is a baseline, never a list of new or missing resources',()=>{assert.equal(changes(undefined,row)[0].kind,'baseline');assert.equal(changes(row,structuredClone(row)).length,0);});
+test('catalogue Not Found is distinct from a confirmed deletion',()=>{const missing={...row,state:'not_found',resources:[]};const diff=changes(row,missing);assert.equal(diff[0].kind,'missing');assert.match(diff[0].text,/does not establish why/);assert.equal(changes(missing,row)[0].kind,'returned');});
+test('blocked checks do not count as missing files; optional age is analyst supplied',()=>{const blocked={...row,resources:[{check:{status:'blocked'}}]};assert.equal(needsReview(blocked,at,0),false);assert.equal(needsReview(blocked,at,90),true);assert.equal(needsReview({...row,resources:[{check:{status:'unavailable'}}]},at),true);});
+test('changes track removed resource metadata and changed URLs without claiming body differences',()=>{const next=structuredClone(row);next.resources[0].url='https://example.com/new.csv';assert.equal(changes(row,next)[0].before,row.resources[0].url);const removed=changes(row,{...row,resources:[]});assert.match(removed[0].text,/File deletion has not been established/);});
+test('unchecked and newly checked resources do not manufacture availability changes',()=>{const old=structuredClone(row);old.resources[0].check.status='not_checked';assert.deepEqual(changes(old,row),[]);});
+test('filters combine institution search, theme and response states',()=>{assert.equal(filterRows([row],{query:'treasury',theme:'Spending',state:'reachable'}).length,1);assert.equal(filterRows([row],{query:'does not exist'}).length,0);assert.equal(filterRows([row],{state:'missing'}).length,0);assert.equal(resourceCounts(row).reachable,1);});
+test('spreadsheet exports quote embedded lines and neutralize formulas',()=>{const csv=evidenceCsv([{...row,title:'=HYPERLINK("bad")'}],at);assert.match(csv,/"'=HYPERLINK\(""bad""\)"/);assert.match(csv,/"reachable","200"/);assert.match(csv,/capture_utc/);});
+test('unsafe source links are not made clickable',()=>{assert.equal(safeUrl('javascript:alert(1)'),null);assert.equal(safeUrl('https://user:secret@example.com'),null);assert.equal(safeUrl('https://open.canada.ca/'),'https://open.canada.ca/');});
+test('age follows capture date rather than today and missing timestamps stay unknown',()=>{assert.equal(ageDays('2026-11-01T00:00:00',at),22);assert.equal(ageDays(null,at),null);assert.equal(ageDays('not a date',at),null);});
+test('evidence note carries observed time and limits',()=>{const report=reportText(row,{captured_at:at},changes(undefined,row));assert.match(report,/2026-11-23T00:00:00Z/);assert.match(report,/not a whole-of-government audit/);assert.match(report,/First observation/);});

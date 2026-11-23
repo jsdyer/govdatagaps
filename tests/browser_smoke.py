@@ -1,4 +1,4 @@
-"""Exercise the built starter at a project subpath in Chromium."""
+"""Exercise the government data watchlist at a project subpath in Chromium."""
 from functools import partial
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
@@ -29,22 +29,32 @@ def main():
                 errors = []
                 page.on("pageerror", lambda error: errors.append(str(error)))
                 page.goto(f"http://127.0.0.1:{server.server_port}/example-tool/")
-                page.locator("#sample").click()
-                assert page.locator("#output").input_value() == "Halifax\nLangley\nVancouver"
-                assert "1 duplicate removed" in page.locator("#status").inner_text()
-                page.locator("#input").fill('<img src=x onerror="alert(1)">\n<img src=x onerror="alert(1)">')
-                assert page.locator("#output").input_value() == '<img src=x onerror="alert(1)">'
-                assert page.locator("img").count() == 0
-                page.locator("#clear").click()
-                assert page.locator("#output").input_value() == ""
-                page.locator("#sample").click()
+                page.locator(".dataset-button").first.wait_for()
+                assert page.locator(".dataset-button").count() >= 8
+                page.locator("#search").fill("border")
+                assert page.locator(".dataset-button").count() == 3
+                page.locator(".dataset-button").filter(has_text="Historical border waits").click()
+                assert "Historical Border Wait Times" in page.locator("#detail h3").inner_text()
+                page.locator("#toggle-resources").click()
+                assert page.locator(".resource").count() > 2
+                with page.expect_download() as download:
+                    page.locator("#export-csv").click()
+                assert download.value.suggested_filename.endswith(".csv")
+                page.locator("#search").fill("not-a-record-<script>")
+                assert page.locator("#empty").is_visible()
+                assert page.locator("#export-csv").is_disabled()
+                page.locator("#search").fill("")
+                page.locator("#threshold").select_option("90")
+                page.locator("#state").select_option("review")
+                assert page.locator(".dataset-button").count() > 0
+                page.locator("#state").select_option("")
                 page.screenshot(path=str(screenshots / "desktop.png"), full_page=True)
                 page.set_viewport_size({"width": 390, "height": 844})
                 assert page.evaluate("document.documentElement.scrollWidth <= window.innerWidth")
                 page.screenshot(path=str(screenshots / "mobile.png"), full_page=True)
                 assert not errors, errors
                 browser.close()
-            print("Browser checks passed: project subpath, sample, clear, safe text and mobile layout")
+            print("Browser checks passed: project subpath, filters, evidence detail, CSV download and mobile layout")
         finally:
             server.shutdown()
 

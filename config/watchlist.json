@@ -1,0 +1,10 @@
+[
+  {"id":"0797e893-751e-4695-8229-a5066e4fe43c","label":"Completed ATIP summaries","theme":"Access to information"},
+  {"id":"d8f85d91-7dec-4fd1-8055-483b77225d8b","label":"Federal contracts","theme":"Public spending"},
+  {"id":"ab076f2e-94b1-4039-bb3d-58002deb826d","label":"Canadian sanctions","theme":"Public accountability"},
+  {"id":"d4a716f5-a2fc-4c3c-88ed-451fe05900e4","label":"Current border waits","theme":"Transportation"},
+  {"id":"000fe5aa-1d77-42d1-bfe7-458c51dacfef","label":"Historical border waits","theme":"Transportation"},
+  {"id":"fe8020ad-51a1-4752-a509-b011a48411a8","label":"Air border waits","theme":"Transportation"},
+  {"id":"74ca048c-0ac9-4400-8e6c-82dee15f469f","label":"Contracting overview","theme":"Public spending"},
+  {"id":"2d90548d-50ef-4802-91f8-c59c5cf68251","label":"Open Government API","theme":"Government infrastructure"}
+]

@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "captures": [
+    {
+      "id": "20261123T041947Z",
+      "captured_at": "2026-11-23T04:19:47Z",
+      "file": "./data/snapshots/20261123T041947Z/snapshot.json",
+      "dataset_count": 8
+    }
+  ],
+  "captured_at": "2026-11-23T04:19:47Z",
+  "dataset_count": 8
+}

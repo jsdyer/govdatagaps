@@ -1,16 +1,22 @@
 {
-  "id": "coolcode-tool-template",
-  "title": "CoolCode Tool Starter",
-  "description": "A browser-only example that trims lines and removes exact duplicates.",
-  "category": "security",
-  "tags": ["text", "lines", "duplicates"],
-  "icon": "scan-search",
-  "url": "/coolcode-tool-template/",
-  "source": "https://github.com/jsdyer/coolcode-tool-template",
+  "id": "govdatagaps",
+  "title": "Government Data Gap Detector",
+  "description": "Follow changes, publication gaps and download availability in a curated federal dataset watchlist.",
+  "category": "explorers",
+  "tags": [
+    "open-data",
+    "government",
+    "changes",
+    "metadata",
+    "atip"
+  ],
+  "icon": "database",
+  "url": "/govdatagaps/",
+  "source": "https://github.com/jsdyer/govdatagaps",
   "hosting": "project",
   "access": "browser",
   "data_info": {
-    "mode": "local",
-    "detail": "The browser reads the text you paste and compares its lines."
+    "mode": "snapshot",
+    "detail": "Weekly observations of eight federal CKAN records retain metadata changes and sampled resource responses; network errors are not treated as deleted data."
   }
 }

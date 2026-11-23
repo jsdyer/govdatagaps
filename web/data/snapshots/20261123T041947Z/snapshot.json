@@ -1,0 +1,1438 @@
+{
+  "schema_version": 1,
+  "captured_at": "2026-11-23T04:19:47Z",
+  "collector": "CKAN GET + bounded HTTP resource checks",
+  "resource_check_limit_per_dataset": 2,
+  "datasets": [
+    {
+      "id": "0797e893-751e-4695-8229-a5066e4fe43c",
+      "label": "Completed ATIP summaries",
+      "theme": "Access to information",
+      "state": "present",
+      "title": "Completed Access to Information Request Summaries dataset",
+      "publisher": "Treasury Board of Canada Secretariat",
+      "metadata_modified": "2026-11-23T04:10:36.449225",
+      "dataset_modified": null,
+      "frequency": "P1M",
+      "license": "Open Government Licence - Canada",
+      "source_url": "https://open.canada.ca/data/en/dataset/0797e893-751e-4695-8229-a5066e4fe43c",
+      "source_api": "https://open.canada.ca/data/en/api/3/action/package_show?id=0797e893-751e-4695-8229-a5066e4fe43c",
+      "source_sha256": "61c32a4b9c1805543343d5e0ff143c3ce7e5d2d0cf101eeab2b841bc6b2afc28",
+      "resources": [
+        {
+          "id": "19383ca2-b01a-487d-88f7-e1ffbc7d39c2",
+          "name": "Completed Access to Information Request Summaries dataset",
+          "url": "https://open.canada.ca/data/dataset/0797e893-751e-4695-8229-a5066e4fe43c/resource/19383ca2-b01a-487d-88f7-e1ffbc7d39c2/download/ati-all.csv",
+          "format": "CSV",
+          "language": [
+            "en",
+            "fr"
+          ],
+          "last_modified": "2026-11-22T06:51:53.832155",
+          "created": "2016-11-24T13:30:18.115239",
+          "check": {
+            "checked_at": "2026-11-23T04:20:19Z",
+            "method": "HEAD",
+            "status": "reachable",
+            "http_status": 200,
+            "final_url": "https://opencanada.blob.core.windows.net/opengovprod/resources/19383ca2-b01a-487d-88f7-e1ffbc7d39c2/ati-all.csv?se=2026-11-23T05%3A20%3A22Z&sp=r&sv=2024-08-04&sr=b&sig=CYTkurkx%2BZfm18FuJyucGLckdEyzOFn8xMFawJnPNbI%3D",
+            "content_type": "text/csv",
+            "last_modified": "Sun, 22 Nov 2026 06:51:56 GMT"
+          }
+        },
+        {
+          "id": "5a1386a5-ba69-4725-8338-2f26004d7382",
+          "name": "Completed Access to Information Request Summaries dataset (Nothing to report)",
+          "url": "https://open.canada.ca/data/dataset/0797e893-751e-4695-8229-a5066e4fe43c/resource/5a1386a5-ba69-4725-8338-2f26004d7382/download/ati-nil.csv",
+          "format": "CSV",
+          "language": [
+            "en",
+            "fr"
+          ],
+          "last_modified": "2026-11-22T06:52:08.803330",
+          "created": "2016-11-24T13:30:18.115272",
+          "check": {
+            "status": "not_checked"
+          }
+        },
+        {
+          "id": "c8745108-5138-45f1-b7aa-cb16cef414c1",
+          "name": "Search Completed Access to Information Requests (English)",
+          "url": "https://open.canada.ca/en/search/ati",
+          "format": "HTML",
+          "language": [
+            "en"
+          ],
+          "last_modified": null,
+          "created": "2017-03-20T10:20:15.304473",
+          "check": {
+            "status": "not_checked"
+          }
+        },
+        {
+          "id": "d338974f-b307-4737-88ae-c28af9178f2a",
+          "name": "Search Completed Access to Information Requests (French)",
+          "url": "https://ouvert.canada.ca/fr/search/ati",
+          "format": "HTML",
+          "language": [
+            "fr"
+          ],
+          "last_modified": null,
+          "created": "2017-03-20T10:20:15.304503",
+          "check": {
+            "status": "not_checked"
+          }
+        },
+        {
+          "id": "9803cf94-f080-46af-8a74-a1fab0c93cb9",
+          "name": "Data Dictionary",
+          "url": "https://open.canada.ca/data/recombinant-published-dictionary/ati",
+          "format": "XLSX",
+          "language": [
+            "en",
+            "fr"
+          ],
+          "last_modified": null,
+          "created": "2026-02-10T14:06:49.142115",
+          "check": {
+            "status": "not_checked"
+          }
+        },
+        {
+          "id": "5515c59c-130a-4979-81fd-acbb94020a8a",
+          "name": "Data Schema",
+          "url": "https://open.canada.ca/data/recombinant-published-schema/ati.json",
+          "format": "JSON",
+          "language": [
+            "en",
+            "fr"
+          ],
+          "last_modified": null,
+          "created": "2026-02-10T14:06:49.142111",
+          "check": {
+            "checked_at": "2026-11-23T04:20:26Z",
+            "method": "HEAD",
+            "status": "reachable",
+            "http_status": 200,
+            "final_url": "https://open.canada.ca/data/recombinant-published-schema/ati.json",
+            "content_type": "application/json",
+            "last_modified": ""
+          }
+        }
+      ],
+      "raw_file": "./data/snapshots/20261123T041947Z/0797e893-751e-4695-8229-a5066e4fe43c.json"
+    },
+    {
+      "id": "d8f85d91-7dec-4fd1-8055-483b77225d8b",
+      "label": "Federal contracts",
+      "theme": "Public spending",
+      "state": "present",
+      "title": "Proactive Publication - Contracts",
+      "publisher": "Treasury Board of Canada Secretariat",
+      "metadata_modified": "2026-11-23T04:10:43.436380",
+      "dataset_modified": null,
+      "frequency": "P3M",
+      "license": "Open Government Licence - Canada",
+      "source_url": "https://open.canada.ca/data/en/dataset/d8f85d91-7dec-4fd1-8055-483b77225d8b",
+      "source_api": "https://open.canada.ca/data/en/api/3/action/package_show?id=d8f85d91-7dec-4fd1-8055-483b77225d8b",
+      "source_sha256": "1be9501a3c88079293dbaa1056358df1828c9978ad0c2376ae135c44acd17581",
+      "resources": [
+        {
+          "id": "12d72e99-0ac1-4465-9f9b-943ff5b81f6c",
+          "name": "Data Visualization",
+          "url": "",
+          "format": "PBIX",
+          "language": [
+            "en",
+            "fr"
+          ],
+          "last_modified": null,
+          "created": "2024-03-28T13:03:22.022517",
+          "check": {
+            "status": "not_checked"
+          }
+        },
+        {
+          "id": "fac950c0-00d5-4ec1-a4d3-9cbebf98a305",
+          "name": "Contracts over $10,000",
+          "url": "https://open.canada.ca/data/dataset/d8f85d91-7dec-4fd1-8055-483b77225d8b/resource/fac950c0-00d5-4ec1-a4d3-9cbebf98a305/download/contracts.csv",
+          "format": "CSV",
+          "language": [
+            "en",
+            "fr"
+          ],
+          "last_modified": "2026-11-22T06:53:38.365785",
+          "created": "2016-12-01T12:05:20.080904",
+          "check": {
+            "status": "not_checked"
+          }
+        },
+        {
+          "id": "fa4ff6c4-e9af-4491-9d4e-2b468e415a68",
+          "name": "Proactive Publication - Contracts Nothing to Report",
+          "url": "https://open.canada.ca/data/dataset/d8f85d91-7dec-4fd1-8055-483b77225d8b/resource/fa4ff6c4-e9af-4491-9d4e-2b468e415a68/download/contracts-nil.csv",
+          "format": "CSV",
+          "language": [
+            "en",
+            "fr"
+          ],
+          "last_modified": "2026-11-22T06:54:01.097221",
+          "created": "2017-04-19T09:40:09.664069",
+          "check": {
+            "status": "not_checked"
+          }
+        },
+        {
+          "id": "2e9a82e2-bb18-4bff-a61e-59af3b429672",
+          "name": "Aggregated Total - Contracts $10K and under",
+          "url": "https://open.canada.ca/data/dataset/d8f85d91-7dec-4fd1-8055-483b77225d8b/resource/2e9a82e2-bb18-4bff-a61e-59af3b429672/download/contractsa.csv",
+          "format": "CSV",
+          "language": [
+            "en",
+            "fr"
+          ],
+          "last_modified": "2026-11-22T06:54:11.778683",
+          "created": "2018-03-07T16:00:39.376061",
+          "check": {
+            "checked_at": "2026-11-23T04:20:30Z",
+            "method": "HEAD",
+            "status": "reachable",
+            "http_status": 200,
+            "final_url": "https://opencanada.blob.core.windows.net/opengovprod/resources/2e9a82e2-bb18-4bff-a61e-59af3b429672/contractsa.csv?se=2026-11-23T05%3A20%3A33Z&sp=r&sv=2024-08-04&sr=b&sig=Y4a/TR6sYxrXZh79hrUEseAiBbD486QthoHGVh2ywGU%3D",
+            "content_type": "text/csv",
+            "last_modified": "Sun, 22 Nov 2026 06:54:11 GMT"
+          }
+        },
+        {
+          "id": "06842a57-7aac-4244-9ea9-4c5b62c36caa",
+          "name": "Data Schema",
+          "url": "https://open.canada.ca/data/recombinant-published-schema/contracts.json",
+          "format": "JSON",
+          "language": [
+            "en",
+            "fr"
+          ],
+          "last_modified": null,
+          "created": "2026-02-10T14:55:25.509019",
+          "check": {
+            "checked_at": "2026-11-23T04:20:37Z",
+            "method": "HEAD",
+            "status": "reachable",
+            "http_status": 200,
+            "final_url": "https://open.canada.ca/data/recombinant-published-schema/contracts.json",
+            "content_type": "application/json",
+            "last_modified": ""
+          }
+        },
+        {
+          "id": "c5d501ef-6c62-4b3c-8bc0-57d6e653ce86",
+          "name": "Data Dictionary",
+          "url": "https://open.canada.ca/data/recombinant-published-dictionary/contracts",
+          "format": "XLSX",
+          "language": [
+            "en",
+            "fr"
+          ],
+          "last_modified": null,
+          "created": "2026-02-10T14:55:25.509023",
+          "check": {
+            "status": "not_checked"
+          }
+        },
+        {
+          "id": "fee9abac-15cb-4104-87b6-58f0398ca934",
+          "name": "Search Government Contracts (English)",
+          "url": "https://search.open.canada.ca/contracts",
+          "format": "HTML",
+          "language": [
+            "en"
+          ],
+          "last_modified": null,
+          "created": "2017-02-14T14:30:21.090793",
+          "check": {
+            "status": "not_checked"
+          }
+        },
+        {
+          "id": "e4cc225d-8fb1-4963-9190-9dcbc9491365",
+          "name": "Search Government Contracts (French)",
+          "url": "https://rechercher.ouvert.canada.ca/contrats",
+          "format": "HTML",
+          "language": [
+            "fr"
+          ],
+          "last_modified": null,
+          "created": "2017-02-14T14:30:21.090826",
+          "check": {
+            "status": "not_checked"
+          }
+        },
+        {
+          "id": "9f2ef2b4-6e78-4ee4-870c-5db795f7a46d",
+          "name": "Guide to the Proactive Publication of Contracts (English)",
+          "url": "https://www.tbs-sct.canada.ca/pol/doc-eng.aspx?id=32763",
+          "format": "HTML",
+          "language": [
+            "en"
+          ],
+          "last_modified": null,
+          "created": "2016-12-01T12:05:20.080951",
+          "check": {
+            "status": "not_checked"
+          }
+        },
+        {
+          "id": "19b384bd-def5-46ea-b409-0cc4544ad400",
+          "name": "Guide to the Proactive Publication of Contracts (French)",
+          "url": "https://www.tbs-sct.canada.ca/pol/doc-fra.aspx?id=32763",
+          "format": "HTML",
+          "language": [
+            "fr"
+          ],
+          "last_modified": null,
+          "created": "2016-12-01T12:05:20.080964",
+          "check": {
+            "status": "not_checked"
+          }
+        },
+        {
+          "id": "7f9b18ca-f627-4852-93d5-69adeb9437d6",
+          "name": "Contracts over $10,000 – Legacy Data",
+          "url": "https://open.canada.ca/data/dataset/d8f85d91-7dec-4fd1-8055-483b77225d8b/resource/7f9b18ca-f627-4852-93d5-69adeb9437d6/download/load-contracts-2020-10-01.csv",
+          "format": "CSV",
+          "language": [
+            "en",
+            "fr"
+          ],
+          "last_modified": null,
+          "created": "2020-10-02T16:30:53.783744",
+          "check": {
+            "status": "not_checked"
+          }
+        }
+      ],
+      "raw_file": "./data/snapshots/20261123T041947Z/d8f85d91-7dec-4fd1-8055-483b77225d8b.json"
+    },
+    {
+      "id": "ab076f2e-94b1-4039-bb3d-58002deb826d",
+      "label": "Canadian sanctions",
+      "theme": "Public accountability",
+      "state": "present",
+      "title": "Consolidated Canadian Autonomous Sanctions List",
+      "publisher": "Global Affairs Canada",
+      "metadata_modified": "2026-08-26T13:44:40.989130",
+      "dataset_modified": null,
+      "frequency": "as_needed",
+      "license": "Open Government Licence - Canada",
+      "source_url": "https://open.canada.ca/data/en/dataset/ab076f2e-94b1-4039-bb3d-58002deb826d",
+      "source_api": "https://open.canada.ca/data/en/api/3/action/package_show?id=ab076f2e-94b1-4039-bb3d-58002deb826d",
+      "source_sha256": "1f4c669af76dd33b1d96573982c46b053fd2c0c8c0f269cb4aee70285972107b",
+      "resources": [
+        {
+          "id": "347ff56b-b0e3-4574-9d55-f90ed5e6e33e",
+          "name": "Consolidated Canadian Autonomous Sanctions List",
+          "url": "http://international.gc.ca/world-monde/assets/office_docs/international_relations-relations_internationales/sanctions/sema-lmes.xml",
+          "format": "XML",
+          "language": [
+            "en",
+            "fr"
+          ],
+          "last_modified": null,
+          "created": "2026-08-26T13:44:40.982163",
+          "check": {
+            "checked_at": "2026-11-23T04:20:41Z",
+            "method": "HEAD",
+            "status": "inconclusive",
+            "http_status": 503,
+            "final_url": "http://international.gc.ca/world-monde/assets/office_docs/international_relations-relations_internationales/sanctions/sema-lmes.xml",
+            "detail": "HTTP 503; a point-in-time observation, not proof of deletion."
+          }
+        },
+        {
+          "id": "a8d2815e-848b-42a4-ba95-3eaffee700af",
+          "name": "Consolidated Canadian Autonomous Sanctions List - 2026-08-19",
+          "url": "https://www.international.gc.ca/world-monde/international_relations-relations_internationales/sanctions/consolidated-consolide.aspx?lang=eng",
+          "format": "HTML",
+          "language": [
+            "en"
+          ],
+          "last_modified": null,
+          "created": "2026-08-26T13:44:40.982169",
+          "check": {
+            "checked_at": "2026-11-23T04:20:56Z",
+            "method": "HEAD",
+            "status": "reachable",
+            "http_status": 200,
+            "final_url": "https://www.international.gc.ca/world-monde/international_relations-relations_internationales/sanctions/consolidated-consolide.aspx?lang=eng",
+            "content_type": "text/html; charset=utf-8",
+            "last_modified": ""
+          }
+        },
+        {
+          "id": "a8411c5b-5a58-4096-a325-59dea3e9d161",
+          "name": "Consolidated Canadian Autonomous Sanctions List - 2026-08-19",
+          "url": "https://www.international.gc.ca/world-monde/international_relations-relations_internationales/sanctions/consolidated-consolide.aspx?lang=fra",
+          "format": "HTML",
+          "language": [
+            "fr"
+          ],
+          "last_modified": null,
+          "created": "2026-08-26T13:44:40.982171",
+          "check": {
+            "status": "not_checked"
+          }
+        }
+      ],
+      "raw_file": "./data/snapshots/20261123T041947Z/ab076f2e-94b1-4039-bb3d-58002deb826d.json"
+    },
+    {
+      "id": "d4a716f5-a2fc-4c3c-88ed-451fe05900e4",
+      "label": "Current border waits",
+      "theme": "Transportation",
+      "state": "present",
+      "title": "Current Border Wait Times",
+      "publisher": "Canada Border Services Agency",
+      "metadata_modified": "2021-12-17T20:42:09.061768",
+      "dataset_modified": null,
+      "frequency": "continual",
+      "license": "Open Government Licence - Canada",
+      "source_url": "https://open.canada.ca/data/en/dataset/d4a716f5-a2fc-4c3c-88ed-451fe05900e4",
+      "source_api": "https://open.canada.ca/data/en/api/3/action/package_show?id=d4a716f5-a2fc-4c3c-88ed-451fe05900e4",
+      "source_sha256": "ad086f43cb40dc0b745c9c3703a275ffc8aa6633843046edb3cf36a367302693",
+      "resources": [
+        {
+          "id": "5492b9e9-965f-4ace-8e7c-9c27d71296d6",
+          "name": "Dataset",
+          "url": "https://www.cbsa-asfc.gc.ca/bwt-taf/bwt-fra.csv",
+          "format": "CSV",
+          "language": [
+            "fr"
+          ],
+          "last_modified": null,
+          "created": "2016-12-01T12:06:17.570798",
+          "check": {
+            "checked_at": "2026-11-23T04:21:01Z",
+            "method": "HEAD",
+            "status": "reachable",
+            "http_status": 200,
+            "final_url": "https://www.cbsa-asfc.gc.ca/bwt-taf/bwt-fra.csv",
+            "content_type": "text/csv",
+            "last_modified": "Mon, 23 Nov 2026 04:20:01 GMT"
+          }
+        },
+        {
+          "id": "bf130ece-9f96-48fe-aa50-285fac1240e2",
+          "name": "Dataset",
+          "url": "https://www.cbsa-asfc.gc.ca/bwt-taf/bwt-eng.csv",
+          "format": "CSV",
+          "language": [
+            "en"
+          ],
+          "last_modified": null,
+          "created": "2016-12-01T12:06:17.570835",
+          "check": {
+            "checked_at": "2026-11-23T04:21:05Z",
+            "method": "HEAD",
+            "status": "reachable",
+            "http_status": 200,
+            "final_url": "https://www.cbsa-asfc.gc.ca/bwt-taf/bwt-eng.csv",
+            "content_type": "text/csv",
+            "last_modified": "Mon, 23 Nov 2026 04:20:01 GMT"
+          }
+        }
+      ],
+      "raw_file": "./data/snapshots/20261123T041947Z/d4a716f5-a2fc-4c3c-88ed-451fe05900e4.json"
+    },
+    {
+      "id": "000fe5aa-1d77-42d1-bfe7-458c51dacfef",
+      "label": "Historical border waits",
+      "theme": "Transportation",
+      "state": "present",
+      "title": "Historical Border Wait Times – Land Mode",
+      "publisher": "Canada Border Services Agency",
+      "metadata_modified": "2025-12-18T22:31:02.377918",
+      "dataset_modified": "2025-11-27 00:00:00",
+      "frequency": "P1M",
+      "license": "Open Government Licence - Canada",
+      "source_url": "https://open.canada.ca/data/en/dataset/000fe5aa-1d77-42d1-bfe7-458c51dacfef",
+      "source_api": "https://open.canada.ca/data/en/api/3/action/package_show?id=000fe5aa-1d77-42d1-bfe7-458c51dacfef",
+      "source_sha256": "2f2650edd51f55fa29aae376629476deb16f828f8741b687035bac44f0656552",
+      "resources": [
+        {
+          "id": "3f5628d0-11c0-4dd8-a813-0185c914985b",
+          "name": "Border Wait Times 2010-2014 EN",
+          "url": "https://www.cbsa-asfc.gc.ca/data/bwt-taf-2010-2014-eng.csv",
+          "format": "CSV",
+          "language": [
+            "en"
+          ],
+          "last_modified": null,
+          "created": "2016-12-01T13:09:18.815891",
+          "check": {
+            "status": "not_checked"
+          }
+        },
+        {
+          "id": "caab1c58-df6a-46a8-a326-55950134866e",
+          "name": "Border Wait Times 2010-2014 FR",
+          "url": "https://www.cbsa-asfc.gc.ca/data/bwt-taf-2010-2014-fra.csv",
+          "format": "CSV",
+          "language": [
+            "fr"
+          ],
+          "last_modified": null,
+          "created": "2016-12-01T13:09:18.815931",
+          "check": {
+            "status": "not_checked"
+          }
+        },
+        {
+          "id": "f7377119-3e38-4671-b0ab-dc19d19f4de6",
+          "name": "Border Wait Times 2014 Q2 EN",
+          "url": "https://www.cbsa-asfc.gc.ca/data/bwt-taf-2014-04-05--2014-06-30-en.csv",
+          "format": "CSV",
+          "language": [
+            "en"
+          ],
+          "last_modified": null,
+          "created": "2016-12-01T13:09:18.815946",
+          "check": {
+            "status": "not_checked"
+          }
+        },
+        {
+          "id": "20d0dd3a-cb70-442e-a09d-e7ef6efe477d",
+          "name": "Border Wait Times 2014 Q2 FR",
+          "url": "https://www.cbsa-asfc.gc.ca/data/bwt-taf-2014-04-05--2014-06-30-fr.csv",
+          "format": "CSV",
+          "language": [
+            "fr"
+          ],
+          "last_modified": null,
+          "created": "2016-12-01T13:09:18.815958",
+          "check": {
+            "status": "not_checked"
+          }
+        },
+        {
+          "id": "c54ecc25-d287-47b2-b335-b1c070fa5e4f",
+          "name": "Border Wait Times 2014 Q3 EN",
+          "url": "https://www.cbsa-asfc.gc.ca/data/bwt-taf-2014-07-01--2014-09-30-en.csv",
+          "format": "CSV",
+          "language": [
+            "en"
+          ],
+          "last_modified": null,
+          "created": "2016-12-01T13:09:18.815968",
+          "check": {
+            "status": "not_checked"
+          }
+        },
+        {
+          "id": "bf095b69-7c03-4900-a45c-546d65ec8a8c",
+          "name": "Border Wait Times 2014 Q3 FR",
+          "url": "https://www.cbsa-asfc.gc.ca/data/bwt-taf-2014-07-01--2014-09-30-fr.csv",
+          "format": "CSV",
+          "language": [
+            "fr"
+          ],
+          "last_modified": null,
+          "created": "2016-12-01T13:09:18.815979",
+          "check": {
+            "status": "not_checked"
+          }
+        },
+        {
+          "id": "7a24ca24-0149-45c4-875b-fec77a5e988d",
+          "name": "Border Wait Times 2014 Q4 EN",
+          "url": "https://www.cbsa-asfc.gc.ca/data/bwt-taf-2014-10-01--2014-12-31-en.csv",
+          "format": "CSV",
+          "language": [
+            "en"
+          ],
+          "last_modified": null,
+          "created": "2016-12-01T13:09:18.815989",
+          "check": {
+            "status": "not_checked"
+          }
+        },
+        {
+          "id": "a3db1a98-a4d8-47bd-9a57-6551dacce645",
+          "name": "Border Wait Times 2014 Q4 FR",
+          "url": "https://www.cbsa-asfc.gc.ca/data/bwt-taf-2014-10-01--2014-12-31-fr.csv",
+          "format": "CSV",
+          "language": [
+            "fr"
+          ],
+          "last_modified": null,
+          "created": "2016-12-01T13:09:18.815999",
+          "check": {
+            "status": "not_checked"
+          }
+        },
+        {
+          "id": "878da3aa-fd74-4516-a528-0de31be86035",
+          "name": "Border Wait Times 2015 Q1 EN",
+          "url": "https://www.cbsa-asfc.gc.ca/data/bwt-taf-2015-01-01--2015-03-31-en.csv",
+          "format": "CSV",
+          "language": [
+            "en"
+          ],
+          "last_modified": null,
+          "created": "2016-12-01T13:09:18.816009",
+          "check": {
+            "status": "not_checked"
+          }
+        },
+        {
+          "id": "c9f9286c-ef8f-425f-b568-396d06695f98",
+          "name": "Border Wait Times 2015 Q1 FR",
+          "url": "https://www.cbsa-asfc.gc.ca/data/bwt-taf-2015-01-01--2015-03-31-fr.csv",
+          "format": "CSV",
+          "language": [
+            "fr"
+          ],
+          "last_modified": null,
+          "created": "2016-12-01T13:09:18.816020",
+          "check": {
+            "status": "not_checked"
+          }
+        },
+        {
+          "id": "12c0b635-82de-42fa-8bbc-c5a5da82d4c5",
+          "name": "Border Wait Times 2015 Q2 EN",
+          "url": "https://www.cbsa-asfc.gc.ca/data/bwt-taf-2015-04-01--2015-06-30-en.csv",
+          "format": "CSV",
+          "language": [
+            "en"
+          ],
+          "last_modified": null,
+          "created": "2016-12-01T13:09:18.816030",
+          "check": {
+            "checked_at": "2026-11-23T04:21:09Z",
+            "method": "HEAD",
+            "status": "reachable",
+            "http_status": 200,
+            "final_url": "https://www.cbsa-asfc.gc.ca/data/bwt-taf-2015-04-01--2015-06-30-en.csv",
+            "content_type": "text/csv",
+            "last_modified": "Tue, 26 Jul 2016 18:13:35 GMT"
+          }
+        },
+        {
+          "id": "4fd18d44-3665-49f3-a85e-85969cb36fe1",
+          "name": "Border Wait Times 2015 Q2 FR",
+          "url": "https://www.cbsa-asfc.gc.ca/data/bwt-taf-2015-04-01--2015-06-30-fr.csv",
+          "format": "CSV",
+          "language": [
+            "fr"
+          ],
+          "last_modified": null,
+          "created": "2016-12-01T13:09:18.816040",
+          "check": {
+            "status": "not_checked"
+          }
+        },
+        {
+          "id": "26cf068e-1be4-4375-8c23-f9e8a1c5582b",
+          "name": "Border Wait Times 2015 Q3 EN",
+          "url": "https://www.cbsa-asfc.gc.ca/data/bwt-taf-2015-07-01--2015-09-30-en.csv",
+          "format": "CSV",
+          "language": [
+            "en"
+          ],
+          "last_modified": null,
+          "created": "2016-12-01T13:09:18.816051",
+          "check": {
+            "status": "not_checked"
+          }
+        },
+        {
+          "id": "8113a94c-b736-4473-ade4-7dbf73bced54",
+          "name": "Border Wait Times 2015 Q3 FR",
+          "url": "https://www.cbsa-asfc.gc.ca/data/bwt-taf-2015-07-01--2015-09-30-fr.csv",
+          "format": "CSV",
+          "language": [
+            "fr"
+          ],
+          "last_modified": null,
+          "created": "2016-12-01T13:09:18.816061",
+          "check": {
+            "status": "not_checked"
+          }
+        },
+        {
+          "id": "ef176ac6-576c-4152-b93b-03a0d0401159",
+          "name": "Border Wait Times 2015 Q4 EN",
+          "url": "https://www.cbsa-asfc.gc.ca/data/bwt-taf-2015-10-01--2015-12-31-en.csv",
+          "format": "CSV",
+          "language": [
+            "en"
+          ],
+          "last_modified": null,
+          "created": "2016-12-01T13:09:18.816071",
+          "check": {
+            "status": "not_checked"
+          }
+        },
+        {
+          "id": "d24dc73e-de5d-4438-82af-f4e2ff456c4a",
+          "name": "Border Wait Times 2015 Q4 FR",
+          "url": "https://www.cbsa-asfc.gc.ca/data/bwt-taf-2015-10-01--2015-12-31-fr.csv",
+          "format": "CSV",
+          "language": [
+            "fr"
+          ],
+          "last_modified": null,
+          "created": "2016-12-01T13:09:18.816082",
+          "check": {
+            "status": "not_checked"
+          }
+        },
+        {
+          "id": "6a9075d2-6135-4c79-a908-3f1f025a5d81",
+          "name": "Border Wait Times 2016 Q1 EN",
+          "url": "https://www.cbsa-asfc.gc.ca/data/bwt-taf-2016-01-01--2016-03-31-en.csv",
+          "format": "CSV",
+          "language": [
+            "en"
+          ],
+          "last_modified": null,
+          "created": "2016-12-01T13:09:18.816092",
+          "check": {
+            "status": "not_checked"
+          }
+        },
+        {
+          "id": "ad95df30-3ec1-46d1-bad2-a0b2eec4119b",
+          "name": "Border Wait Times 2016 Q1 FR",
+          "url": "https://www.cbsa-asfc.gc.ca/data/bwt-taf-2016-01-01--2016-03-31-fr.csv",
+          "format": "CSV",
+          "language": [
+            "fr"
+          ],
+          "last_modified": null,
+          "created": "2016-12-01T13:09:18.816102",
+          "check": {
+            "status": "not_checked"
+          }
+        },
+        {
+          "id": "a0e18243-4b3c-4d03-9c9b-42f13997d83f",
+          "name": "Data Dictionary",
+          "url": "https://www.cbsa-asfc.gc.ca/data/bwt-taf--ref.odt",
+          "format": "TXT",
+          "language": [
+            "en",
+            "fr"
+          ],
+          "last_modified": null,
+          "created": "2016-12-01T13:09:18.816112",
+          "check": {
+            "status": "not_checked"
+          }
+        },
+        {
+          "id": "d1394f4c-b620-419e-a597-5d8765095f67",
+          "name": "Changelog - EN",
+          "url": "https://www.cbsa-asfc.gc.ca/data/bwt-taf--changelog.txt",
+          "format": "TXT",
+          "language": [
+            "en"
+          ],
+          "last_modified": null,
+          "created": "2016-12-01T13:09:18.816122",
+          "check": {
+            "status": "not_checked"
+          }
+        },
+        {
+          "id": "3c688afc-d4ff-4baf-9d9f-3d94e6184342",
+          "name": "Changelog - FR",
+          "url": "https://www.cbsa-asfc.gc.ca/data/bwt-taf--journal-des-modifications.txt",
+          "format": "TXT",
+          "language": [
+            "fr"
+          ],
+          "last_modified": null,
+          "created": "2016-12-01T13:09:18.816132",
+          "check": {
+            "status": "not_checked"
+          }
+        },
+        {
+          "id": "9390bd94-9673-49b7-bc23-ecd01fd7aff5",
+          "name": "Border Wait Times 2016 Q2 EN",
+          "url": "https://www.cbsa-asfc.gc.ca/data/bwt-taf-2016-04-01--2016-06-30-en.csv",
+          "format": "CSV",
+          "language": [
+            "en"
+          ],
+          "last_modified": null,
+          "created": "2017-03-10T12:20:15.674923",
+          "check": {
+            "status": "not_checked"
+          }
+        },
+        {
+          "id": "ae2c43c4-ee10-43db-8f56-8d34ac9546eb",
+          "name": "Border Wait Times 2016 Q2 FR",
+          "url": "https://www.cbsa-asfc.gc.ca/data/bwt-taf-2016-04-01--2016-06-30-fr.csv",
+          "format": "CSV",
+          "language": [
+            "fr"
+          ],
+          "last_modified": null,
+          "created": "2017-03-10T12:20:15.675009",
+          "check": {
+            "status": "not_checked"
+          }
+        },
+        {
+          "id": "4eccf5e3-dd97-4cc2-b3c2-77c358fa2d5e",
+          "name": "Border Wait Times 2016 Q3 EN",
+          "url": "https://www.cbsa-asfc.gc.ca/data/bwt-taf-2016-07-01--2016-09-30-en.csv",
+          "format": "CSV",
+          "language": [
+            "en"
+          ],
+          "last_modified": null,
+          "created": "2017-03-10T12:30:15.659971",
+          "check": {
+            "status": "not_checked"
+          }
+        },
+        {
+          "id": "6c73195d-ab20-422a-86d1-b94dd84f55b2",
+          "name": "Border Wait Times 2016 Q3 FR",
+          "url": "https://www.cbsa-asfc.gc.ca/data/bwt-taf-2016-07-01--2016-09-30-fr.csv",
+          "format": "CSV",
+          "language": [
+            "fr"
+          ],
+          "last_modified": null,
+          "created": "2017-03-10T12:30:15.660040",
+          "check": {
+            "status": "not_checked"
+          }
+        },
+        {
+          "id": "e3bc8c3b-44dc-4557-9f73-356c68a92988",
+          "name": "Border Wait Times 2016 Q4 EN",
+          "url": "https://www.cbsa-asfc.gc.ca/data/bwt-taf-2016-10-01--2016-12-31-en.csv",
+          "format": "CSV",
+          "language": [
+            "en"
+          ],
+          "last_modified": null,
+          "created": "2017-03-10T12:30:15.660054",
+          "check": {
+            "status": "not_checked"
+          }
+        },
+        {
+          "id": "59f8ad79-6802-4aa1-85aa-3ae1b87a84bf",
+          "name": "Border Wait Times 2016 Q4 FR",
+          "url": "https://www.cbsa-asfc.gc.ca/data/bwt-taf-2016-10-01--2016-12-31-fr.csv",
+          "format": "CSV",
+          "language": [
+            "fr"
+          ],
+          "last_modified": null,
+          "created": "2017-03-10T12:30:15.660067",
+          "check": {
+            "status": "not_checked"
+          }
+        },
+        {
+          "id": "d2c0b17a-0586-4f0c-a675-623ddb66c23f",
+          "name": "Border Wait Times 2017 Q1 EN",
+          "url": "https://www.cbsa-asfc.gc.ca/data/bwt-taf-2017-01-01--2017-03-31-en.csv",
+          "format": "CSV",
+          "language": [
+            "en"
+          ],
+          "last_modified": null,
+          "created": "2017-09-27T16:40:14.659026",
+          "check": {
+            "status": "not_checked"
+          }
+        },
+        {
+          "id": "7e9a1fa6-8f7b-4baf-ac96-6bb09f102965",
+          "name": "Border Wait Times 2017 Q1 FR",
+          "url": "https://www.cbsa-asfc.gc.ca/data/bwt-taf-2017-01-01--2017-03-31-fr.csv",
+          "format": "CSV",
+          "language": [
+            "fr"
+          ],
+          "last_modified": null,
+          "created": "2017-09-27T16:40:14.659043",
+          "check": {
+            "status": "not_checked"
+          }
+        },
+        {
+          "id": "a7919924-1d40-4086-8bcc-3da4de0e7c20",
+          "name": "Border Wait Times 2017 Q2 EN",
+          "url": "https://www.cbsa-asfc.gc.ca/data/bwt-taf-2017-04-01--2017-06-30-en.csv",
+          "format": "CSV",
+          "language": [
+            "en"
+          ],
+          "last_modified": null,
+          "created": "2017-09-27T16:40:14.659051",
+          "check": {
+            "status": "not_checked"
+          }
+        },
+        {
+          "id": "baa4363a-b31c-41d0-97fd-771205470190",
+          "name": "Border Wait Times 2017 Q2 FR",
+          "url": "https://www.cbsa-asfc.gc.ca/data/bwt-taf-2017-04-01--2017-06-30-fr.csv",
+          "format": "CSV",
+          "language": [
+            "fr"
+          ],
+          "last_modified": null,
+          "created": "2017-09-27T16:40:14.659056",
+          "check": {
+            "status": "not_checked"
+          }
+        },
+        {
+          "id": "36e25d2d-4039-44e2-9028-102f0301a9e3",
+          "name": "Border Wait Times 2017 Q3 EN",
+          "url": "https://www.cbsa-asfc.gc.ca/data/bwt-taf-2017-07-01--2017-09-30-en.csv",
+          "format": "CSV",
+          "language": [
+            "en"
+          ],
+          "last_modified": null,
+          "created": "2018-07-15T19:40:30.880833",
+          "check": {
+            "status": "not_checked"
+          }
+        },
+        {
+          "id": "a7c03a05-9c8a-43f3-8d83-4a64ba25f519",
+          "name": "Border Wait Times 2017 Q3 FR",
+          "url": "https://www.cbsa-asfc.gc.ca/data/bwt-taf-2017-07-01--2017-09-30-fr.csv",
+          "format": "CSV",
+          "language": [
+            "fr"
+          ],
+          "last_modified": null,
+          "created": "2018-07-15T19:40:30.880841",
+          "check": {
+            "status": "not_checked"
+          }
+        },
+        {
+          "id": "27af2142-c036-481a-97b6-5f87c943ddbf",
+          "name": "Border Wait Times 2017 Q4 EN",
+          "url": "https://www.cbsa-asfc.gc.ca/data/bwt-taf-2017-10-01--2017-12-31-en.csv",
+          "format": "CSV",
+          "language": [
+            "en"
+          ],
+          "last_modified": null,
+          "created": "2018-07-15T19:40:30.880844",
+          "check": {
+            "status": "not_checked"
+          }
+        },
+        {
+          "id": "1229db5b-b5bd-4819-8a6d-148a84e48f6b",
+          "name": "Border Wait Times 2017 Q4 FR",
+          "url": "https://www.cbsa-asfc.gc.ca/data/bwt-taf-2017-10-01--2017-12-31-fr.csv",
+          "format": "CSV",
+          "language": [
+            "fr"
+          ],
+          "last_modified": null,
+          "created": "2018-07-15T19:40:30.880847",
+          "check": {
+            "status": "not_checked"
+          }
+        },
+        {
+          "id": "d0895f7e-6c38-46a0-be90-d902c7398b9f",
+          "name": "Border Wait Times 2018 Q1 EN",
+          "url": "https://www.cbsa-asfc.gc.ca/data/bwt-taf-2018-01-01--2018-03-31-en.csv",
+          "format": "CSV",
+          "language": [
+            "en"
+          ],
+          "last_modified": null,
+          "created": "2018-07-20T18:11:16.805424",
+          "check": {
+            "status": "not_checked"
+          }
+        },
+        {
+          "id": "5d1024a4-a17e-40f2-8ab0-997f4e710953",
+          "name": "Border Wait Times 2018 Q1 FR",
+          "url": "https://www.cbsa-asfc.gc.ca/data/bwt-taf-2018-01-01--2018-03-31-fr.csv",
+          "format": "CSV",
+          "language": [
+            "fr"
+          ],
+          "last_modified": null,
+          "created": "2018-07-20T18:11:20.270778",
+          "check": {
+            "status": "not_checked"
+          }
+        },
+        {
+          "id": "03f422d1-3e2e-46d7-80f8-e07dfb480d62",
+          "name": "Border Wait Times 2018 Q2 EN",
+          "url": "https://www.cbsa-asfc.gc.ca/data/bwt-taf-2018-04-01--2018-06-30-en.csv",
+          "format": "CSV",
+          "language": [
+            "en"
+          ],
+          "last_modified": null,
+          "created": "2019-07-17T22:52:25.350678",
+          "check": {
+            "checked_at": "2026-11-23T04:21:12Z",
+            "method": "HEAD",
+            "status": "reachable",
+            "http_status": 200,
+            "final_url": "https://www.cbsa-asfc.gc.ca/data/bwt-taf-2018-04-01--2018-06-30-en.csv",
+            "content_type": "text/csv",
+            "last_modified": "Mon, 15 Jul 2019 15:55:14 GMT"
+          }
+        },
+        {
+          "id": "9ed9a37f-7634-44c8-a4d8-5e9e96afae70",
+          "name": "Border Wait Times 2018 Q2 FR",
+          "url": "https://www.cbsa-asfc.gc.ca/data/bwt-taf-2018-04-01--2018-06-30-fr.csv",
+          "format": "CSV",
+          "language": [
+            "fr"
+          ],
+          "last_modified": null,
+          "created": "2019-07-17T22:52:25.350687",
+          "check": {
+            "status": "not_checked"
+          }
+        },
+        {
+          "id": "72bb3c68-6af1-4776-aafa-7b4b56b0368d",
+          "name": "Border Wait Times 2018 Q3 EN",
+          "url": "https://www.cbsa-asfc.gc.ca/data/bwt-taf-2018-07-01--2018-09-30-en.csv",
+          "format": "CSV",
+          "language": [
+            "en"
+          ],
+          "last_modified": null,
+          "created": "2019-07-17T22:52:25.350690",
+          "check": {
+            "status": "not_checked"
+          }
+        },
+        {
+          "id": "615c0389-8649-4176-b16e-c06e45890b92",
+          "name": "Border Wait Times 2018 Q3 FR",
+          "url": "https://www.cbsa-asfc.gc.ca/data/bwt-taf-2018-07-01--2018-09-30-fr.csv",
+          "format": "CSV",
+          "language": [
+            "fr"
+          ],
+          "last_modified": null,
+          "created": "2019-07-17T22:52:25.350693",
+          "check": {
+            "status": "not_checked"
+          }
+        },
+        {
+          "id": "7cca69d8-7052-468f-a277-09d6591244db",
+          "name": "Border Wait Times 2018 Q4 EN",
+          "url": "https://www.cbsa-asfc.gc.ca/data/bwt-taf-2018-10-01--2018-12-31-en.csv",
+          "format": "CSV",
+          "language": [
+            "en"
+          ],
+          "last_modified": null,
+          "created": "2019-07-17T22:52:25.350695",
+          "check": {
+            "status": "not_checked"
+          }
+        },
+        {
+          "id": "8b6bcf5a-57e1-4d9c-9c16-accc6e378724",
+          "name": "Border Wait Times 2018 Q4 FR",
+          "url": "https://www.cbsa-asfc.gc.ca/data/bwt-taf-2018-10-01--2018-12-31-fr.csv",
+          "format": "CSV",
+          "language": [
+            "fr"
+          ],
+          "last_modified": null,
+          "created": "2019-07-17T22:52:25.350698",
+          "check": {
+            "status": "not_checked"
+          }
+        },
+        {
+          "id": "c41fbf6b-d9d3-45ae-aca9-435d3684c8ca",
+          "name": "Border Wait Times 2019 Q1 EN",
+          "url": "https://www.cbsa-asfc.gc.ca/data/bwt-taf-2019-01-01--2019-03-31-en.csv",
+          "format": "CSV",
+          "language": [
+            "en"
+          ],
+          "last_modified": null,
+          "created": "2019-07-17T22:52:25.350701",
+          "check": {
+            "status": "not_checked"
+          }
+        },
+        {
+          "id": "8b5083aa-2b3b-48c5-80f4-8ba27baeb3bb",
+          "name": "Border Wait Times 2019 Q1 FR",
+          "url": "https://www.cbsa-asfc.gc.ca/data/bwt-taf-2019-01-01--2019-03-31-fr.csv",
+          "format": "CSV",
+          "language": [
+            "fr"
+          ],
+          "last_modified": null,
+          "created": "2019-07-17T22:52:25.350703",
+          "check": {
+            "status": "not_checked"
+          }
+        },
+        {
+          "id": "e2fc1969-3e9d-4e9d-8b71-ed52b58474cd",
+          "name": "Border Wait Times 2019 Q2 EN",
+          "url": "https://www.cbsa-asfc.gc.ca/data/bwt-taf-2019-04-01--2019-06-30-en.csv",
+          "format": "CSV",
+          "language": [
+            "en"
+          ],
+          "last_modified": null,
+          "created": "2019-07-31T01:04:54.776515",
+          "check": {
+            "status": "not_checked"
+          }
+        },
+        {
+          "id": "f749b561-56b8-4cef-ab75-36233d5228b2",
+          "name": "Border Wait Times 2019 Q2 FR",
+          "url": "https://www.cbsa-asfc.gc.ca/data/bwt-taf-2019-04-01--2019-06-30-fr.csv",
+          "format": "CSV",
+          "language": [
+            "fr"
+          ],
+          "last_modified": null,
+          "created": "2019-07-31T01:04:54.776523",
+          "check": {
+            "status": "not_checked"
+          }
+        },
+        {
+          "id": "32e1a1eb-2ccd-48bd-a4a1-2a68db094126",
+          "name": "Border Wait Times 2019 Q3 EN",
+          "url": "https://www.cbsa-asfc.gc.ca/data/bwt-taf-2019-07-01--2019-09-30-en.csv",
+          "format": "CSV",
+          "language": [
+            "en"
+          ],
+          "last_modified": null,
+          "created": "2020-03-25T18:44:25.109091",
+          "check": {
+            "status": "not_checked"
+          }
+        },
+        {
+          "id": "179e1f44-c9eb-427b-a893-7e9db147b30f",
+          "name": "Border Wait Times 2019 Q3 FR",
+          "url": "https://www.cbsa-asfc.gc.ca/data/bwt-taf-2019-07-01--2019-09-30-fr.csv",
+          "format": "CSV",
+          "language": [
+            "fr"
+          ],
+          "last_modified": null,
+          "created": "2020-03-25T18:44:25.109097",
+          "check": {
+            "status": "not_checked"
+          }
+        },
+        {
+          "id": "274c529c-17b7-48d4-b816-20bf303de867",
+          "name": "Border Wait Times 2019 Q4 EN",
+          "url": "https://www.cbsa-asfc.gc.ca/data/bwt-taf-2019-10-01--2019-12-31-en.csv",
+          "format": "CSV",
+          "language": [
+            "en"
+          ],
+          "last_modified": null,
+          "created": "2020-03-30T15:00:37.590285",
+          "check": {
+            "status": "not_checked"
+          }
+        },
+        {
+          "id": "0ae1f633-82cb-42a7-8365-25f161dbf1d0",
+          "name": "Border Wait Times 2019 Q4 FR",
+          "url": "https://www.cbsa-asfc.gc.ca/data/bwt-taf-2019-10-01--2019-12-31-fr.csv",
+          "format": "CSV",
+          "language": [
+            "fr"
+          ],
+          "last_modified": null,
+          "created": "2020-03-30T15:00:37.590292",
+          "check": {
+            "status": "not_checked"
+          }
+        },
+        {
+          "id": "fd22f9a1-1597-4961-9954-e189f0bfb45c",
+          "name": "Border Wait Times 2020 Q1 FR",
+          "url": "https://www.cbsa-asfc.gc.ca/data/bwt-taf-2020-01-01--2020-03-31-fr.csv",
+          "format": "CSV",
+          "language": [
+            "fr"
+          ],
+          "last_modified": null,
+          "created": "2020-04-14T15:50:46.581197",
+          "check": {
+            "status": "not_checked"
+          }
+        },
+        {
+          "id": "2b5853e4-41b4-4858-86dd-38012e30d5b8",
+          "name": "Historical Border Wait Times - 2019-04-01 to 2025-10-31",
+          "url": "https://open.canada.ca/data/dataset/000fe5aa-1d77-42d1-bfe7-458c51dacfef/resource/2b5853e4-41b4-4858-86dd-38012e30d5b8/download/land-bwt-opengov-en.csv",
+          "format": "CSV",
+          "language": [
+            "en"
+          ],
+          "last_modified": "2025-12-16T22:29:29.301561",
+          "created": "2024-07-04T12:30:32.454921",
+          "check": {
+            "status": "not_checked"
+          }
+        },
+        {
+          "id": "c38762fc-3185-4cc7-9669-89ae2f9b5069",
+          "name": "Historical Border Wait Time - 2019-04-01 to 2025-10-31",
+          "url": "https://open.canada.ca/data/dataset/000fe5aa-1d77-42d1-bfe7-458c51dacfef/resource/c38762fc-3185-4cc7-9669-89ae2f9b5069/download/land-bwt-opengov-fr.csv",
+          "format": "CSV",
+          "language": [
+            "fr"
+          ],
+          "last_modified": "2025-12-16T22:30:20.226159",
+          "created": "2024-07-04T12:50:30.956402",
+          "check": {
+            "status": "not_checked"
+          }
+        },
+        {
+          "id": "795f643b-022f-4470-979f-47e07c846af3",
+          "name": "Data Dictionary",
+          "url": "https://open.canada.ca/data/dataset/000fe5aa-1d77-42d1-bfe7-458c51dacfef/resource/795f643b-022f-4470-979f-47e07c846af3/download/data-dictionary-dictionnaire-des-donnees.txt",
+          "format": "TXT",
+          "language": [
+            "en",
+            "fr"
+          ],
+          "last_modified": "2024-07-10T18:27:26.248637",
+          "created": "2024-07-04T16:40:34.428674",
+          "check": {
+            "status": "not_checked"
+          }
+        }
+      ],
+      "raw_file": "./data/snapshots/20261123T041947Z/000fe5aa-1d77-42d1-bfe7-458c51dacfef.json"
+    },
+    {
+      "id": "fe8020ad-51a1-4752-a509-b011a48411a8",
+      "label": "Air border waits",
+      "theme": "Transportation",
+      "state": "present",
+      "title": "Border Wait Times – Air Mode",
+      "publisher": "Canada Border Services Agency",
+      "metadata_modified": "2026-02-02T21:02:54.679509",
+      "dataset_modified": "2025-11-27 00:00:00",
+      "frequency": "P1M",
+      "license": "Open Government Licence - Canada",
+      "source_url": "https://open.canada.ca/data/en/dataset/fe8020ad-51a1-4752-a509-b011a48411a8",
+      "source_api": "https://open.canada.ca/data/en/api/3/action/package_show?id=fe8020ad-51a1-4752-a509-b011a48411a8",
+      "source_sha256": "634072d1d09f2808c1fa25a4643454e6f59e48ac00b3617d32d5c71d56f4b27c",
+      "resources": [
+        {
+          "id": "7d4d8f73-1c3a-4102-b043-ec156029fef7",
+          "name": "Border Wait Times – Air Mode",
+          "url": "https://open.canada.ca/data/dataset/fe8020ad-51a1-4752-a509-b011a48411a8/resource/7d4d8f73-1c3a-4102-b043-ec156029fef7/download/air-bwt-opengov-en.csv",
+          "format": "CSV",
+          "language": [
+            "en"
+          ],
+          "last_modified": "2025-12-16T22:25:34.533039",
+          "created": "2024-05-09T16:03:22.543402",
+          "check": {
+            "checked_at": "2026-11-23T04:21:15Z",
+            "method": "HEAD",
+            "status": "reachable",
+            "http_status": 200,
+            "final_url": "https://opencanada.blob.core.windows.net/opengovprod/resources/7d4d8f73-1c3a-4102-b043-ec156029fef7/air-bwt-opengov-en.csv?se=2026-11-23T05%3A21%3A19Z&sp=r&sv=2024-08-04&sr=b&sig=9sWebBRo9PoOCXdxAwxTyXMugYUjjjLpeUp15qZU/x8%3D",
+            "content_type": "text/csv",
+            "last_modified": "Tue, 16 Dec 2025 22:25:34 GMT"
+          }
+        },
+        {
+          "id": "83ca4f53-8722-4a75-a1aa-9be3ac0ee7a3",
+          "name": "Data dictionary",
+          "url": "https://open.canada.ca/data/dataset/fe8020ad-51a1-4752-a509-b011a48411a8/resource/83ca4f53-8722-4a75-a1aa-9be3ac0ee7a3/download/air-bwt-data-dictionary-enfr.txt",
+          "format": "TXT",
+          "language": [
+            "en",
+            "fr"
+          ],
+          "last_modified": "2024-05-14T19:33:57.318443",
+          "created": "2024-05-09T16:03:22.543408",
+          "check": {
+            "status": "not_checked"
+          }
+        },
+        {
+          "id": "8a440173-b06f-45b0-9aa5-7b549dd4adda",
+          "name": "Border Wait Times – Air Mode",
+          "url": "https://open.canada.ca/data/dataset/fe8020ad-51a1-4752-a509-b011a48411a8/resource/8a440173-b06f-45b0-9aa5-7b549dd4adda/download/air-bwt-opengov-fr.csv",
+          "format": "CSV",
+          "language": [
+            "fr"
+          ],
+          "last_modified": "2025-12-16T22:26:05.202729",
+          "created": "2024-05-14T13:55:01.639423",
+          "check": {
+            "checked_at": "2026-11-23T04:21:23Z",
+            "method": "HEAD",
+            "status": "reachable",
+            "http_status": 200,
+            "final_url": "https://opencanada.blob.core.windows.net/opengovprod/resources/8a440173-b06f-45b0-9aa5-7b549dd4adda/air-bwt-opengov-fr.csv?se=2026-11-23T05%3A21%3A27Z&sp=r&sv=2024-08-04&sr=b&sig=q9VHCj/UVDwaBkVcXKOqdOvlPkkMnD39zOvh/lFhyuQ%3D",
+            "content_type": "text/csv",
+            "last_modified": "Tue, 16 Dec 2025 22:26:05 GMT"
+          }
+        }
+      ],
+      "raw_file": "./data/snapshots/20261123T041947Z/fe8020ad-51a1-4752-a509-b011a48411a8.json"
+    },
+    {
+      "id": "74ca048c-0ac9-4400-8e6c-82dee15f469f",
+      "label": "Contracting overview",
+      "theme": "Public spending",
+      "state": "present",
+      "title": "Contracting overview",
+      "publisher": "Communications Security Establishment Canada",
+      "metadata_modified": "2024-12-09T18:16:01.569011",
+      "dataset_modified": "2023-10-16 00:00:00",
+      "frequency": "P1Y",
+      "license": "Open Government Licence - Canada",
+      "source_url": "https://open.canada.ca/data/en/dataset/74ca048c-0ac9-4400-8e6c-82dee15f469f",
+      "source_api": "https://open.canada.ca/data/en/api/3/action/package_show?id=74ca048c-0ac9-4400-8e6c-82dee15f469f",
+      "source_sha256": "a64cf2cf3ebeff10f11add5dcfc19c999294ac03089da7b5078e71b45873db61",
+      "resources": [
+        {
+          "id": "e368f7f9-7b76-40db-94e9-39e23c1e8319",
+          "name": "CSV EN",
+          "url": "https://open.canada.ca/data/dataset/74ca048c-0ac9-4400-8e6c-82dee15f469f/resource/e368f7f9-7b76-40db-94e9-39e23c1e8319/download/contracts-dataset-english.csv",
+          "format": "CSV",
+          "language": [
+            "en"
+          ],
+          "last_modified": "2023-10-16T15:50:41.856919",
+          "created": "2022-10-04T17:58:39.002409",
+          "check": {
+            "checked_at": "2026-11-23T04:21:31Z",
+            "method": "HEAD",
+            "status": "reachable",
+            "http_status": 200,
+            "final_url": "https://opencanada.blob.core.windows.net/opengovprod/resources/e368f7f9-7b76-40db-94e9-39e23c1e8319/contracts-dataset-english.csv?se=2026-11-23T05%3A21%3A35Z&sp=r&sv=2024-08-04&sr=b&sig=XdsHb6%2BnTFwR0tsKQK7Nnetzx2dAQzWy4mntEeTazXg%3D",
+            "content_type": "text/csv",
+            "last_modified": "Mon, 16 Oct 2023 15:50:42 GMT"
+          }
+        },
+        {
+          "id": "25f0208f-016d-4d38-8331-1d4593367e19",
+          "name": "CSV FR",
+          "url": "https://open.canada.ca/data/dataset/74ca048c-0ac9-4400-8e6c-82dee15f469f/resource/25f0208f-016d-4d38-8331-1d4593367e19/download/contracts-dataset-french.csv",
+          "format": "CSV",
+          "language": [
+            "fr"
+          ],
+          "last_modified": "2023-10-16T15:52:38.620904",
+          "created": "2022-10-04T17:58:39.002419",
+          "check": {
+            "checked_at": "2026-11-23T04:21:40Z",
+            "method": "HEAD",
+            "status": "reachable",
+            "http_status": 200,
+            "final_url": "https://opencanada.blob.core.windows.net/opengovprod/resources/25f0208f-016d-4d38-8331-1d4593367e19/contracts-dataset-french.csv?se=2026-11-23T05%3A21%3A43Z&sp=r&sv=2024-08-04&sr=b&sig=Lf%2BnNg95LEAQJAPaluCb0m/Ysi8REq464sHR0fR1oRo%3D",
+            "content_type": "text/csv",
+            "last_modified": "Mon, 16 Oct 2023 15:52:38 GMT"
+          }
+        }
+      ],
+      "raw_file": "./data/snapshots/20261123T041947Z/74ca048c-0ac9-4400-8e6c-82dee15f469f.json"
+    },
+    {
+      "id": "2d90548d-50ef-4802-91f8-c59c5cf68251",
+      "label": "Open Government API",
+      "theme": "Government infrastructure",
+      "state": "present",
+      "title": "Open Government API",
+      "publisher": "Treasury Board of Canada Secretariat",
+      "metadata_modified": "2024-11-20T21:31:57.143016",
+      "dataset_modified": null,
+      "frequency": "as_needed",
+      "license": "Open Government Licence - Canada",
+      "source_url": "https://open.canada.ca/data/en/dataset/2d90548d-50ef-4802-91f8-c59c5cf68251",
+      "source_api": "https://open.canada.ca/data/en/api/3/action/package_show?id=2d90548d-50ef-4802-91f8-c59c5cf68251",
+      "source_sha256": "2743e6da261db49cceaa27ba40381f34eaa5cf1d35f48450e345ae755564796b",
+      "resources": [
+        {
+          "id": "36830ed0-cd83-4fea-b2ae-15890116c68e",
+          "name": "OpenAPI Specification",
+          "url": "https://open.canada.ca/data/dataset/2d90548d-50ef-4802-91f8-c59c5cf68251/resource/36830ed0-cd83-4fea-b2ae-15890116c68e/download/openapi-en.json",
+          "format": "JSON",
+          "language": [
+            "en"
+          ],
+          "last_modified": "2023-09-06T18:37:50.734449",
+          "created": "2023-09-06T19:11:54.017448",
+          "check": {
+            "checked_at": "2026-11-23T04:21:47Z",
+            "method": "HEAD",
+            "status": "reachable",
+            "http_status": 200,
+            "final_url": "https://opencanada.blob.core.windows.net/opengovprod/resources/36830ed0-cd83-4fea-b2ae-15890116c68e/openapi-en.json?se=2026-11-23T05%3A21%3A51Z&sp=r&sv=2024-08-04&sr=b&sig=aRyiJVt5VHtP5/K9alfCuY%2BOQV/RMoRidRef3go1VAM%3D",
+            "content_type": "application/json",
+            "last_modified": "Wed, 06 Sep 2023 18:37:51 GMT"
+          }
+        },
+        {
+          "id": "3df30287-74a6-4887-967f-7f210abb7b93",
+          "name": "OpenAPI Specification",
+          "url": "https://open.canada.ca/data/dataset/2d90548d-50ef-4802-91f8-c59c5cf68251/resource/3df30287-74a6-4887-967f-7f210abb7b93/download/openapi-fr.json",
+          "format": "JSON",
+          "language": [
+            "fr"
+          ],
+          "last_modified": "2023-09-06T18:50:09.479372",
+          "created": "2023-09-06T19:11:54.017454",
+          "check": {
+            "checked_at": "2026-11-23T04:21:55Z",
+            "method": "HEAD",
+            "status": "reachable",
+            "http_status": 200,
+            "final_url": "https://opencanada.blob.core.windows.net/opengovprod/resources/3df30287-74a6-4887-967f-7f210abb7b93/openapi-fr.json?se=2026-11-23T05%3A21%3A59Z&sp=r&sv=2024-08-04&sr=b&sig=tsuEcL0m4XWLUz6FZ9hG17KITPf5OyfjFSIwFACoPlE%3D",
+            "content_type": "application/json",
+            "last_modified": "Wed, 06 Sep 2023 18:50:09 GMT"
+          }
+        }
+      ],
+      "raw_file": "./data/snapshots/20261123T041947Z/2d90548d-50ef-4802-91f8-c59c5cf68251.json"
+    }
+  ]
+}

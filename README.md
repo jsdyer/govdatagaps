@@ -1,116 +1,63 @@
-# CoolCode browser tool template
+# Government Data Gap Detector
 
-A starting point for independent tools at `coolcode.ca/<repo>/`: a working local-text
-example, responsive UI, Python standard-library build, Node tests, PR checks and Pages
-publication. No npm install is needed.
-
-## Using the example
+A public browser tool at **https://coolcode.ca/govdatagaps/** for following a small federal dataset watchlist. Inspect source metadata, sampled download responses and changes across immutable weekly captures. Export a filtered resource CSV or an individual evidence note for follow-up research and access-to-information requests.
 
 <!-- coolcode:guide -->
-The first occurrence of each trimmed line keeps its place. Compare the output with the original text before copying the result.
+Choose a dataset to inspect its declared update frequency, metadata dates and sampled download responses. Set an optional metadata-age threshold for your own review, then save an evidence note with source links and timestamps. The first capture is a baseline: a blocked request does not mean a missing file, and an old metadata date does not prove the underlying data is overdue.
 <!-- /coolcode:guide -->
 
-For a real tool, replace this paragraph with one or two plain-text sentences
-about an example, a limit or how to interpret the results. Keep the source,
-coverage, refresh behaviour and a worked example in this README as appropriate.
-When updating a tool, revise any details its behaviour has changed and keep the
-homepage's shorter data-source sentence in `tool.json` accurate.
-The hub imports the marked note into the catalogue README.
+## What works
 
-## One-time template setup
+- Search by title, institution, subject or record ID; filter by observation or subject.
+- Select any retained capture, compare metadata, resource URLs and check classifications with the previous observation, and review up to six observations in the timeline.
+- Review declared source cadence separately from a user-selected 30-, 90-, 180- or 365-day **portal metadata age** threshold. The default is no threshold. No SLA or statutory deadline is inferred.
+- Save the filtered resource observations as CSV or save a selected dataset's evidence note. CSV protects spreadsheet formula cells.
+- Follow the official catalogue and read the exact raw CKAN response retained for each capture, identified by SHA-256.
 
-Enable **Settings → General → Template repository** here. This repository does not
-need Pages enabled: its workflow builds/tests but intentionally skips deployment.
-New copies also skip deployment until `scripts/init.py` sets the tool ID to match
-their repository name. This lets you create the repo before configuring Pages.
+## Coverage and dates
 
-## Start a new tool
+`config/watchlist.json` deliberately selects eight federal records: completed ATIP summaries, federal contract disclosures, Canadian sanctions, current and historical land border waits, air border waits, the CSE contracting overview and the Open Government API. This is a curated observatory, not a complete federal audit. Add a real CKAN dataset UUID and label/theme to that file to extend collection.
 
-1. Select **Use this template → Create a new repository**, choose owner `jsdyer`,
-   a unique lowercase name such as `my-tool`, and public visibility.
-2. Clone the new repository. Use Python 3.12+ and Node 24+.
-3. Set the identity, using a slug that matches the repository name:
+The first actual capture was taken on **2026-11-23 UTC**. It contains eight records and 84 resource entries, of which 16 URLs were checked. No historical changes are fabricated. The first capture returned 15 reachable responses and one inconclusive HTTP 503 response for the sanctions XML resource; this is an observed response, not evidence that the XML was deleted.
+
+`captured_at` is the start of collection; each resource has its own `checked_at`. `metadata_modified` is the portal's metadata timestamp. `dataset_modified` is the separately supplied publisher date when present. Neither automatically identifies the contents' latest reporting period. Source-declared update frequency is shown verbatim or with a readable label.
+
+## Collection and interpretation
+
+The [official Open Government API guide](https://open.canada.ca/en/access-our-application-programming-interface-api) documents GET requests. The [API catalogue record](https://open.canada.ca/data/en/dataset/2d90548d-50ef-4802-91f8-c59c5cf68251) confirms that public read access requires no key. Collection uses `package_show?id=…` and validates both the HTTP response and CKAN envelope.
+
+For each dataset, two resource URLs are selected deterministically: common downloadable formats first, then English language, then resource ID. A HEAD request follows redirects; a server rejecting HEAD with 405 or 501 receives a GET with `Range: bytes=0-0`. File bodies are not read or archived. This is not content, schema, freshness or malware validation. The other resources remain explicitly **Not checked**. No visitor URL triggers a server request.
+
+| Observation | Meaning |
+| --- | --- |
+| Reachable | A 2xx/3xx response was received. It may still be an HTML error page. |
+| HTTP 404 / 410 | Resource lookup failed at the captured time; investigate the source. |
+| Blocked / rate limited | HTTP 401, 403 or 429; availability is not established. |
+| Inconclusive | Other errors, timeouts, network failures or unsupported URLs. |
+| Catalogue Not Found | A valid CKAN response explicitly returned `Not Found Error`. Generic HTTP 404 pages and network errors never create this state. |
+
+A previously observed catalogue record returning explicit CKAN Not Found is a **lookup change**, not proof that records were destroyed. A resource missing from new metadata likewise does not prove file deletion. Only compared metadata fields, URL additions/removals and response classifications produce timeline changes; body content is not compared.
+
+Source records carry their own licence. Follow the [Open Government Licence – Canada](https://open.canada.ca/en/open-government-licence-canada) where applicable. This independent tool is not an official Government of Canada assessment.
+
+## Scheduled refresh
+
+`.github/workflows/refresh.yml` collects every Monday at 07:17 UTC or manually. No secrets or registration are needed. The collector validates every metadata response before writing a capture; unsuccessful collection leaves prior files untouched. All dated normalized snapshots and raw source responses remain under `web/data/snapshots/`. The manifest points to the latest successful capture. The workflow validates data, runs tests and builds before committing, then dispatches the Pages workflow explicitly because commits using `GITHUB_TOKEN` do not trigger push workflows.
+
+GitHub schedules can be delayed or disabled after inactivity. The app shows the actual capture date. Collection failure is visible in Actions; this app does not send success emails or operate a notification service. Resource failures are valid observations, so they do not by themselves fail the capture.
 
 ```sh
-python3 scripts/init.py my-tool --title "My Tool" --description "Describe what this tool does."
-```
-
-Review the category, tags and icon in `tool.json`. `access: "browser"` tells the main
-catalogue that the tool works immediately without installation. `--owner` supports a different
-GitHub owner, but only projects owned by `jsdyer` inherit the CoolCode domain.
-
-4. Replace the example in `web/` and its tests. Update the privacy explanation,
-   source attribution and README to describe the real tool.
-5. Test and preview:
-
-```sh
+python3 scripts/collect.py              # network collection, bounded resource checks
+python3 scripts/collect.py --validate   # offline validation
 node --test tests/*.test.mjs
 python3 -m unittest discover -s tests -v
-python3 scripts/build.py
-python3 -m http.server 8000 --directory dist
+python3 scripts/build.py                # offline static build
 ```
 
-Open `http://localhost:8000/`. The example trims lines, skips blanks and removes exact
-duplicates, preserving first-seen order and capitalization. It processes the text in tab memory. Update that explanation if your app behaves differently.
+Pages deploys successful main builds. `dist/` is generated and untracked. `tests/browser_smoke.py` checks the browser flow at a project subpath in CI.
 
-CI also tests the browser flow and mobile layout at a project subpath. Replace the
-sample assertions in `tests/browser_smoke.py` when implementing your own UI. To run
-that check locally (optional for ordinary preview):
+## Privacy and evidence limits
 
-```sh
-python3 -m venv .venv
-. .venv/bin/activate
-python3 -m pip install -r tests/browser-requirements.txt
-python3 -m playwright install --with-deps chromium
-python3 tests/browser_smoke.py
-```
+Searches, thresholds, selections and exports remain in the tab and are not stored. The app fetches its own static captures only; opening official links contacts those providers. CoolCode's shared counter measures aggregate tool opens without query/filter values. No API keys are embedded.
 
-Playwright is a test-only dependency; the app and its static build do not use it.
-
-## Publish and register
-
-When the actual tool is ready, in the **new tool repository** set **Settings → Pages → Build and deployment →
-Source → GitHub Actions**. Push to `main`, or manually run **Browser tool · Check and
-publish** after enabling Pages. If the initial deployment ran before Pages was enabled,
-enable it and rerun. PRs only check/build and provide a downloadable preview artifact.
-
-Keep `{{VISIT_COUNTER}}` in the page head and `{{ISSUE_LINK}}` in the footer when replacing the starter UI. The build enables these for initialized CoolCode repositories. The shared counter records aggregate opens on coolcode.ca by public tool ID. Toolbox inputs and URL parameters are excluded. The issue link opens a reporting form with the tool already selected.
-
-Keep app-owned asset paths and module imports relative. Check `https://coolcode.ca/my-tool/`.
-Do not add a CNAME or set `coolcode.ca` as this project's custom domain; the account
-site supplies it. Only successful `main` builds deploy.
-
-After verifying the app, copy the reviewed object from `tool.json` into `data/tools.json`
-in [the main site](https://github.com/jsdyer/jsdyer.github.io). Each tool still builds
-independently. Update the hub record when listing metadata changes; the hub is the
-authority for discovery. Ordinary app updates touch only this repository.
-
-The main site separates **Use in your browser** from **Install yourself**. An app
-that asks for a file is still a browser tool. Standalone Linux packages should start
-in their own repositories with their own build/release workflow, rather than copying
-this browser-only scaffold. Their hub record uses `access: "install"`, links to an
-installation guide, and includes `requirements`.
-
-## Files
-
-| Path | Purpose |
-| --- | --- |
-| `tool.json` | Page metadata and a ready-to-copy catalogue record |
-| `web/` | HTML, responsive CSS, DOM interactions and separate model logic |
-| `scripts/build.py` | Escape metadata and build `web/` into `dist/` |
-| `scripts/init.py` | Set a new project's identity |
-| `tests/` | Application and builder tests |
-| `.github/workflows/pages.yml` | Check PRs and publish successful main builds |
-| `AGENTS.md` | Instructions for future coding work |
-
-Namespace optional storage as `coolcode:<tool-id>:<key>`; CoolCode paths share a
-browser origin. Don't save pasted text/uploads by default. Document external APIs
-and send only the information needed for the selected action. Never embed secrets.
-
-Scheduled refresh is opt-in. Validate source data before deploying, display its date,
-and preserve the last good deployment on failure. Public-repository schedules can
-stop after 60 days without repository activity.
-
-Templates don't propagate future edits automatically. Adopt fixes explicitly and
-consider a versioned reusable workflow once several tools confirm the shared process.
-Choose and add the intended software license before distributing a new project.
+The CSV includes all resource entries in the filtered datasets, including explicit unchecked entries. The text note includes one dataset's current observations and immediately preceding comparison. Evidence notes are research aids, not assertions of legal noncompliance. For example, follow up on the historical border-wait record by asking for its intended publication schedule and any records explaining the observed metadata/resource dates.
