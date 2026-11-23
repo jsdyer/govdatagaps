@@ -17,6 +17,7 @@
   "access": "browser",
   "data_info": {
     "mode": "snapshot",
-    "detail": "Weekly observations of eight federal CKAN records retain metadata changes and sampled resource responses; network errors are not treated as deleted data."
+    "detail": "Weekly observations of eight federal CKAN records retain metadata changes and sampled resource responses; network errors are not treated as deleted data.",
+    "cadence": "Weekly"
   }
 }
