@@ -61,3 +61,11 @@ Pages deploys successful main builds. `dist/` is generated and untracked. `tests
 Searches, thresholds, selections and exports remain in the tab and are not stored. The app fetches its own static captures only; opening official links contacts those providers. CoolCode's shared counter measures aggregate tool opens without query/filter values. No API keys are embedded.
 
 The CSV includes all resource entries in the filtered datasets, including explicit unchecked entries. The text note includes one dataset's current observations and immediately preceding comparison. Evidence notes are research aids, not assertions of legal noncompliance. For example, follow up on the historical border-wait record by asking for its intended publication schedule and any records explaining the observed metadata/resource dates.
+
+<!-- schedule-reliability -->
+## Schedule reliability
+
+Public GitHub repositories can have scheduled workflows disabled after 60 days of inactivity. A separate weekly [schedule guard](.github/workflows/schedule-guard.yml) calls GitHub's enable-workflow API for an explicit list of refresh workflows and itself. It can restore workflows disabled for inactivity, preserves manually disabled workflows, and runs independently of collection failures.
+
+This is an interim mitigation, not a scheduling guarantee: GitHub does not document active-workflow renewal as a permanent exemption, and scheduled runs can be delayed or dropped. A scheduler on our own Linux server is the planned independent trigger. The guard does not collect data, create dummy commits, or change source/check timestamps; successful collection and published data freshness still need monitoring.
+<!-- /schedule-reliability -->
